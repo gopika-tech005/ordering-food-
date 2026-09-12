@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie - Restaurant Ordering</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+
+        <div class="logo">🍴foodie spot</div>
+        <p id="welcome-user"></p>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#menu">Menu</a>
+            <a href="#about">About</a>
+        </nav>
+
+        <button class="cart-btn" onclick="openCart()">
+            🛒 Cart <span id="cart-count">0</span>
+        </button>
+        <button class="logout-btn" onclick="logoutUser()">
+            🚪 Logout
+        </button>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Delicious Food,<br>Delivered Fast 🍕</h1>
+
+            <p>
+                Order your favourite food from our restaurant
+                and enjoy it at your doorstep.
+            </p>
+
+            <a href="#menu" class="menu-btn">Explore Menu</a>
+        </div>
+    </section>
+
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+
+        <h2>Our Popular Menu</h2>
+
+        <div class="categories">
+            <button onclick="filterFood('all')">All</button>
+            <button onclick="filterFood('biryani')">🍛 Biryani</button>
+            <button onclick="filterFood('burger')">🍔 Burgers</button>
+            <button onclick="filterFood('pizza')">🍕 Pizza</button>
+            <button onclick="filterFood('snacks')">🍟 Snacks</button>
+            <button onclick="filterFood('drinks')">🥤 Drinks</button>
+        </div>
+
+        <input type="text" id="search" placeholder="🔍 Search food..." onkeyup="searchFood()">
+
+        <div class="food-container" id="food-container">
+
+            <!-- Food 1 -->
+            <div class="food-card" data-name="Chicken Burger" data-category="burger">
+
+                <div class="food-image">🍔</div>
+
+                <h3>Chicken Burger</h3>
+
+                <p>Juicy chicken burger with fresh vegetables.</p>
+
+                <div class="food-bottom">
+                    <span>₹149</span>
+                    <button onclick="addToCart('Chicken Burger', 149)">
+                        Add +
+                    </button>
+
+                    <button onclick="viewDetails('Chicken Burger')">
+                        View Details
+                    </button>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- Food 2 -->
+            <div class="food-card" data-name="Chicken Biryani" data-category="biryani">
+
+                <div class="food-image">🍛</div>
+
+                <h3>Chicken Biryani</h3>
+
+                <p>Spicy and delicious chicken biryani.</p>
+
+                <div class="food-bottom">
+                    <span>₹199</span>
+                    <button onclick="addToCart('Chicken Biryani', 199)">
+                        Add +
+                    </button>
+
+                    <button onclick="viewDetails('Chicken Biryani')">
+                        View Details
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Food 3 -->
+            <div class="food-card" data-name="Cheese Pizza" data-category="pizza">
+
+                <div class="food-image">🍕</div>
+
+                <h3>Cheese Pizza</h3>
+
+                <p>Hot cheesy pizza with delicious toppings.</p>
+
+                <div class="food-bottom">
+                    <span>₹249</span>
+                    <button onclick="addToCart('Cheese Pizza', 249)">
+                        Add +
+                    </button>
+
+                    <button onclick="viewDetails('Cheese Pizza')">
+                        View Details
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Food 4 -->
+            <div class="food-card" data-name="French Fries" data-category="snacks">
+
+                <div class="food-image">🍟</div>
+
+                <h3>French Fries</h3>
+
+                <p>Crispy golden fries with special seasoning.</p>
+
+                <div class="food-bottom">
+                    <span>₹99</span>
+                    <button onclick="addToCart('French Fries', 99)">
+                        Add +
+                    </button>
+
+                    <button onclick="viewDetails('French Fries')">
+                        View Details
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Food 5 -->
+            <div class="food-card" data-name="Chicken Noodles" data-category="snacks">
+
+                <div class="food-image">🍜</div>
+
+                <h3>Chicken Noodles</h3>
+
+                <p>Hot noodles with chicken and vegetables.</p>
+
+                <div class="food-bottom">
+                    <span>₹179</span>
+                    <button onclick="addToCart('Chicken Noodles', 179)">
+                        Add +
+                    </button>
+
+                    <button onclick="viewDetails('Chicken Noodles')">
+                        View Details
+                    </button>
+                </div>
+
+            </div>
+
+
+            <!-- Food 6 -->
+            <div class="food-card" data-name="Cold Coffee" data-category="drinks">
+
+                <div class="food-image">🥤</div>
+
+                <h3>Cold Coffee</h3>
+
+                <p>Refreshing chilled coffee.</p>
+
+                <div class="food-bottom">
+                    <span>₹89</span>
+                    <button onclick="addToCart('Cold Coffee', 89)">
+                        Add +
+                    </button>
+
+                    <button onclick="viewDetails('Cold Coffee')">
+                        View Details
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Cart -->
+    <div class="cart-overlay" id="cart">
+
+        <div class="cart-box">
+
+            <button class="close-btn" onclick="closeCart()">✕</button>
+
+            <h2>🛒 Your Cart</h2>
+
+            <div id="cart-items">
+                <p class="empty">Your cart is empty.</p>
+            </div>
+
+            <div class="cart-total">
+                <strong>Total:</strong>
+                <span>₹<span id="total">0</span></span>
+            </div>
+
+            <button class="order-btn" onclick="openCheckout()">
+                Proceed to Checkout
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- About -->
+    <section class="about" id="about">
+        <h2>About Foodie</h2>
+        <p>
+            foodie spot is a simple food ordering website, everyone enjoy by tasting the delicious home made
+            cooked food.
+        </p>
+    </section>
+
+
+    <footer>
+        <p>© 2026 Delicious foodie | Made with love</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+    <script>
+        checkLogin();
+    </script>
+
+</body>
+
+</html>

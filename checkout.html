@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout - Foodie</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">🍴 Foodie</div>
+
+        <button class="cart-btn" onclick="history.back()">
+            ← Back
+        </button>
+    </header>
+
+
+    <section class="checkout-container">
+
+        <h1>Checkout</h1>
+
+        <!-- Delivery Address -->
+
+        <div class="checkout-box">
+
+            <h2>📍 Delivery Address</h2>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Full Name"
+            >
+
+            <input
+                type="text"
+                id="phone"
+                placeholder="Phone Number"
+            >
+
+            <textarea
+                id="address"
+                placeholder="Enter your delivery address"
+            ></textarea>
+
+        </div>
+
+
+        <!-- Order Summary -->
+
+        <div class="checkout-box">
+
+            <h2>🛒 Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subtotal">₹0</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Delivery Fee</span>
+                <span>₹40</span>
+            </div>
+
+            <hr>
+
+            <div class="summary-row total-row">
+                <span>Total</span>
+                <span id="grand-total">₹0</span>
+            </div>
+
+        </div>
+
+
+        <!-- Payment -->
+
+        <div class="checkout-box">
+
+            <h2>💳 Payment Method</h2>
+
+            <label>
+                <input
+                    type="radio"
+                    name="payment"
+                    value="upi"
+                    checked
+                >
+                UPI
+            </label>
+
+            <br><br>
+
+            <label>
+                <input
+                    type="radio"
+                    name="payment"
+                    value="card"
+                >
+                Card
+            </label>
+
+            <br><br>
+
+            <label>
+                <input
+                    type="radio"
+                    name="payment"
+                    value="cod"
+                >
+                Cash on Delivery
+            </label>
+
+        </div>
+
+
+        <button
+            class="order-btn"
+            onclick="placeOrder()"
+        >
+            Place Order
+        </button>
+
+    </section>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
